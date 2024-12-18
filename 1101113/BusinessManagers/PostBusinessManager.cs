@@ -35,7 +35,7 @@ namespace _1101113.BusinessManager
 
         public IndexViewModel GetIndexViewModel(string searchString ,int? page)
         {
-            int pagesize = 3;
+            int pagesize = 9;
             int pageNumber = page ?? 1;
             var posts = postService.GetPosts(searchString ?? string.Empty)
                 .Where(post => post.published);
@@ -45,6 +45,31 @@ namespace _1101113.BusinessManager
                 Posts = new StaticPagedList<Post>(posts.Skip((pageNumber - 1) * pagesize).Take(pagesize),pageNumber,pagesize,posts.Count()),
                 SearchString = searchString,
                 PageNumber = pageNumber
+            };
+        }
+
+        public async Task<ActionResult<PostViewModel>> GetPostViewModel(int? id,ClaimsPrincipal claimsPrincipal)
+        {
+            if (id is null)
+                return new BadRequestResult();
+
+            var postId = id.Value;
+
+            var post = postService.GetPost(postId);
+
+            if (id is null)
+                return new NotFoundResult();
+
+            if (!post.published)
+            {
+               var authorizationResult = await authorizationService.AuthorizeAsync(claimsPrincipal, post, Operations.Read);
+
+                if (!authorizationResult.Succeeded) return DetermineActionResult(claimsPrincipal);
+            }
+
+            return new PostViewModel
+            {
+                Post = post
             };
         }
 
@@ -91,7 +116,7 @@ namespace _1101113.BusinessManager
             if (editViewModel.HeaderImage != null)
             {
                 string webRootPath = webHostEnviroment.WebRootPath;
-                string pathToImage = $@"{webRootPath}\UserFiles\Blogs\{post.id}\HeaderImage.jpg";
+                string pathToImage = $@"{webRootPath}\UserFiles\Posts\{post.id}\HeaderImage.jpg";
 
                 using (var fileStream = new FileStream(pathToImage, FileMode.Create))
                 {
@@ -108,8 +133,10 @@ namespace _1101113.BusinessManager
         {
             if(id is null)
                 return new BadRequestResult();
-            var BlogId = id.Value;
-            var post = postService.GetPost(BlogId);
+
+            var postId = id.Value;
+
+            var post = postService.GetPost(postId);
 
             if(id is null)
                 return new NotFoundResult();

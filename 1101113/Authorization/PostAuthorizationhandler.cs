@@ -27,6 +27,9 @@ namespace _1101113.Authorization
             {
                 context.Succeed(requirement);
             }
+
+            if (requirement.Name == Operations.Read.Name && !resource.published && applicationUser == resource.Creator)
+                context.Succeed(requirement);
         }
     }
 }
