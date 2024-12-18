@@ -908,5 +908,6 @@ C:\Users\WiNDOWS 11 PRO\source\repos\SUT-BLOG-main\1101113\obj\Debug\netcoreapp3
 C:\Users\WiNDOWS 11 PRO\source\repos\SUT-BLOG-main\1101113\obj\Debug\netcoreapp3.1\Razor\Views\Post\Edit.cshtml.g.cs
 C:\Users\WiNDOWS 11 PRO\source\repos\SUT-BLOG-main\1101113\obj\Debug\netcoreapp3.1\Razor\Views\Post\Index.cshtml.g.cs
 C:\Users\WiNDOWS 11 PRO\source\repos\SUT-BLOG-main\1101113\obj\Debug\netcoreapp3.1\Razor\Views\Post\_Layout.cshtml.g.cs
-C:\Users\WiNDOWS 11 PRO\source\repos\SUT-BLOG-main\1101113\obj\Debug\netcoreapp3.1\Razor\Views\Post\_ReadLayout.cshtml.g.cs
 C:\Users\WiNDOWS 11 PRO\source\repos\SUT-BLOG-main\1101113\obj\Debug\netcoreapp3.1\Razor\Views\Admin\About.cshtml.g.cs
+C:\Users\WiNDOWS 11 PRO\source\repos\SUT-BLOG-main\1101113\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_HomeLayout.cshtml.g.cs
+C:\Users\WiNDOWS 11 PRO\source\repos\SUT-BLOG-main\1101113\obj\Debug\netcoreapp3.1\Razor\Views\Home\Author.cshtml.g.cs

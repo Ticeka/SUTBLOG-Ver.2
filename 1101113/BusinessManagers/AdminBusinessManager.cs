@@ -43,6 +43,7 @@ namespace _1101113.BusinessManagers
             var applicationUser = await userManager.GetUserAsync(claimsPrincipal);
             return new AboutViewModel
             {
+                ApplicationUser = applicationUser,
                 SubHeader = applicationUser.SubHeader,
                 Content = applicationUser.AboutContent
             };

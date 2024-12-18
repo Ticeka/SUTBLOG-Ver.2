@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Blog.Data.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,6 +10,7 @@ namespace _1101113.Models.AdminViewModels
 {
     public class AboutViewModel
     {
+        public ApplicationUser ApplicationUser { get; set; }
         [Display(Name = "Header Image")]
         public IFormFile HeaderImage { get; set; }
 

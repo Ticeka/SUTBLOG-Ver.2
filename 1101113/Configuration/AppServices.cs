@@ -36,6 +36,8 @@ namespace _1101113.Configuration
         {
             serviceCollection.AddScoped<IPostBusinessManager, PostBusinessManager>();
             serviceCollection.AddScoped<IAdminBusinessManager, AdminBusinessManager>();
+            serviceCollection.AddScoped<IHomeBusinessManager, HomeBusinessManager>();
+
 
             serviceCollection.AddScoped<IPostService, PostService>(); // ลงทะเบียน BlogService
             serviceCollection.AddScoped<IUserService, UserService>();

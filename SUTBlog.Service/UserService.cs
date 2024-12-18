@@ -3,6 +3,7 @@ using Blog.Data.Models;
 using Blog.Service.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,13 @@ namespace Blog.Service
         {
             this.applicationDbContext = applicationDbContext;
         }
+
+        public ApplicationUser Get(string id)
+        {
+            return applicationDbContext.Users
+                .FirstOrDefault(user => user.Id == id);
+        }
+
 
         public async Task<ApplicationUser> Update(ApplicationUser applicationUser)
         {
