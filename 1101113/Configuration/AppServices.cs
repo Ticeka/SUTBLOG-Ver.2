@@ -38,6 +38,7 @@ namespace _1101113.Configuration
             serviceCollection.AddScoped<IAdminBusinessManager, AdminBusinessManager>();
 
             serviceCollection.AddScoped<IPostService, PostService>(); // ลงทะเบียน BlogService
+            serviceCollection.AddScoped<IUserService, UserService>();
         }
 
         public static void AddCustomerAuthorization(this IServiceCollection serviceCollection)

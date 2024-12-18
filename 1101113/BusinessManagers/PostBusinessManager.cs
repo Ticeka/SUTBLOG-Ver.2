@@ -25,6 +25,8 @@ namespace _1101113.BusinessManager
         private readonly IWebHostEnvironment webHostEnviroment;
         private readonly IAuthorizationService authorizationService;
 
+        
+
         public PostBusinessManager(UserManager<ApplicationUser> userManager,IPostService postService,IWebHostEnvironment webHostEnvironment,IAuthorizationService authorizationService)
         {
             this.userManager = userManager;
@@ -66,6 +68,9 @@ namespace _1101113.BusinessManager
 
                 if (!authorizationResult.Succeeded) return DetermineActionResult(claimsPrincipal);
             }
+
+            // เพิ่มจำนวนผู้เข้าชม (ViewCount) หลังจากดึงโพสต์
+            await IncrementViewCount(postId, claimsPrincipal);
 
             return new PostViewModel
             {
@@ -167,5 +172,28 @@ namespace _1101113.BusinessManager
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
             }
         }
+
+        public async Task IncrementViewCount(int postId, ClaimsPrincipal claimsPrincipal)
+        {
+            // ดึงโพสต์จาก service
+            var post = postService.GetPost(postId);
+
+            if (post != null)
+            {
+                // ตรวจสอบว่าโพสต์นี้เป็นโพสต์ของผู้ใช้ที่ล็อกอินอยู่หรือไม่
+                var currentUser = await userManager.GetUserAsync(claimsPrincipal);
+
+                // ถ้าโพสต์เป็นของผู้ใช้ที่ล็อกอินอยู่, ไม่เพิ่ม ViewCount
+                if (post.Creator != currentUser)
+                {
+                    // เพิ่ม ViewCount ทีละ 1
+                    post.Viewer++;
+
+                    // บันทึกการเปลี่ยนแปลงในฐานข้อมูล
+                    await postService.Update(post);
+                }
+            }
+        }
+
     }
 }

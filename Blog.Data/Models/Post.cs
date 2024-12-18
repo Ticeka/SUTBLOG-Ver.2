@@ -16,6 +16,8 @@ namespace Blog.Data.Models
         public bool Approved { get; set; }
         public bool published { get; set; }
         public ApplicationUser Approver { get; set; }
+        public string Tag { get; set; }
+        public int Viewer { get; set; }
         public virtual IEnumerable<Comment> Comments { get; set; }
     }
 }
