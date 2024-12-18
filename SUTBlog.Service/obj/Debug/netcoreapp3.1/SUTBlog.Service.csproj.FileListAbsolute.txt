@@ -1,0 +1,9 @@
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\SUTBlog.Service\bin\Debug\netcoreapp3.1\SUTBlog.Service.deps.json
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\SUTBlog.Service\bin\Debug\netcoreapp3.1\SUTBlog.Service.dll
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\SUTBlog.Service\bin\Debug\netcoreapp3.1\SUTBlog.Service.pdb
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\SUTBlog.Service\obj\Debug\netcoreapp3.1\SUTBlog.Service.csproj.AssemblyReference.cache
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\SUTBlog.Service\obj\Debug\netcoreapp3.1\SUTBlog.Service.AssemblyInfoInputs.cache
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\SUTBlog.Service\obj\Debug\netcoreapp3.1\SUTBlog.Service.AssemblyInfo.cs
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\SUTBlog.Service\obj\Debug\netcoreapp3.1\SUTBlog.Service.csproj.CoreCompileInputs.cache
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\SUTBlog.Service\obj\Debug\netcoreapp3.1\SUTBlog.Service.dll
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\SUTBlog.Service\obj\Debug\netcoreapp3.1\SUTBlog.Service.pdb

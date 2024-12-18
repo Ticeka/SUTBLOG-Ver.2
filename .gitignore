@@ -1,0 +1,104 @@
+# Ignore system files and directories
+Application Data/
+Cookies/
+Local Settings/
+My Documents/
+NetHood/
+PrintHood/
+Recent/
+SendTo/
+Start Menu/
+Templates/
+OneDrive/
+AppData/
+Contacts/
+Desktop/
+Documents/
+Downloads/
+Favorites/
+Links/
+Music/
+Pictures/
+Videos/
+Saved Games/
+Searches/
+
+# Ignore user-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+NTUSER.DAT
+NTUSER.DAT*
+ntuser.dat.LOG*
+ntuser.ini
+
+# Ignore IDE and editor files
+.vscode/
+.vs/
+.librarymanager/
+
+# Ignore .NET and build results
+*.dll
+*.exe
+*.pdb
+*.app
+*.log
+*.cache
+*.bin
+*.obj
+*.suo
+*.tmp
+*.user
+*.rsuser
+*.csproj.user
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Ignore database files
+*.mdf
+*.ldf
+*.ndf
+
+# Ignore NuGet packages
+packages/
+.nuget/
+*.nupkg
+project.lock.json
+
+# Ignore Android and mobile development files
+.android/
+.gradle/
+build/
+
+# Ignore Scoop (Windows package manager)
+scoop/
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.swp
+*.DS_Store
+Thumbs.db
+
+# Ignore user-installed config files
+.config/
+.dotnet/
+.gitconfig
+.lesshst
+.lim/
+.limpc/
+.nbi/
+.vscode/
+
+# Ignore generated folders
+7-Elephant/
+7-Elephants/
+LAB5/
+MyCUDLab/
+test/
+
+# Ignore SQL-related files
+SQLQuery1.sql

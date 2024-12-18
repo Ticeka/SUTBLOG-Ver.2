@@ -1,0 +1,9 @@
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\blog.service\bin\Debug\netcoreapp3.1\blog.service.deps.json
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\blog.service\bin\Debug\netcoreapp3.1\blog.service.dll
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\blog.service\bin\Debug\netcoreapp3.1\blog.service.pdb
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\blog.service\obj\Debug\netcoreapp3.1\blog.service.csproj.AssemblyReference.cache
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\blog.service\obj\Debug\netcoreapp3.1\blog.service.AssemblyInfoInputs.cache
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\blog.service\obj\Debug\netcoreapp3.1\blog.service.AssemblyInfo.cs
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\blog.service\obj\Debug\netcoreapp3.1\blog.service.csproj.CoreCompileInputs.cache
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\blog.service\obj\Debug\netcoreapp3.1\blog.service.dll
+C:\Users\WiNDOWS 11 PRO\source\repos\1101113\blog.service\obj\Debug\netcoreapp3.1\blog.service.pdb
