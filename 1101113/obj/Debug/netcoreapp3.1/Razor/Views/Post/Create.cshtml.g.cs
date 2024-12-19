@@ -27,7 +27,7 @@ using _1101113.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a83a4e4d548a5b63b2fcbadf4701621ab1ba8754", @"/Views/Post/Create.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"26f0a0710f7902f917f8418d5e0891c9d013506e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8579b2a7733212e0009c640158c32e288736510b", @"/Views/_ViewImports.cshtml")]
     public class Views_Post_Create : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<_1101113.Models.PostViewModels.CreateViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("custom-file-input"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);

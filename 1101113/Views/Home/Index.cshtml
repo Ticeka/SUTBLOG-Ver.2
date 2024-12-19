@@ -7,38 +7,33 @@
         <div class="input-group mb-3">
             <input asp-for="SearchString" type="text" class="form-control" placeholder="Search blogs for...." />
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" >Search</button>
+                <button class="btn btn-outline-secondary">Search</button>
             </div>
         </div>
     </form>
 
     <!-- Blog List -->
     <div class="row">
-    @foreach (var post in Model.Posts)
-    {
-        <div class="col-lg-4 col-md-4 col-sm-6 mb-4"> <!-- ปรับจาก col-md-6 เป็น col-md-4 -->
-            <div class="card border-0 shadow">
-                <img src="/UserFiles/Posts/@post.id/HeaderImage.jpg" class="card-img-top" />
-                <div class="card-body">
-                    <div class="row text-center" style="margin: 0px auto 10px 0px">
-                        <h5 class="card-title text-center w-100">
-                            <a asp-controller="Post" asp-action="Index" asp-route-id="@post.id">@post.Title</a>
-                        </h5>
-                    </div>
-                </div>
+        @foreach (var post in Model.Posts)
+        {
+<div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+    <!-- ปรับจาก col-md-6 เป็น col-md-4 -->
+    <div class="card border-0 shadow">
+        <img src="/UserFiles/Posts/@post.id/HeaderImage.jpg" class="card-img-top" />
+        <div class="card-body">
+            <div class="row text-center" style="margin: 0px auto 10px 0px">
+                <h5 class="card-title text-center w-100">
+                    <a asp-controller="Post" asp-action="Index" asp-route-id="@post.id">@post.Title</a>
+                </h5>
             </div>
         </div>
-    }
-</div>
+    </div>
+</div>}
+    </div>
 
 
-    <!-- Pagination -->
-    <div class="pager-container">
-        <pager list="@Model.Posts"
-               options="PagedListRenderOptions.Bootstrap4PageNumbersPlusPrevAndNext"
-               asp-action="Index"
-               asp-controller="Home"
-               asp-route-query="@Model.SearchString">
-        </pager>
+
+    <div list="@Model.Posts" count="20">
+        <pager class="pager-container" list="@Model.Posts" options="@PagedListRenderOptions.Bootstrap4PageNumbersPlusPrevAndNext" asp-action="Index" asp-controller="Home" asp-route-query="@Model.SearchString" />
     </div>
 </div>
