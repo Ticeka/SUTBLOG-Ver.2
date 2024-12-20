@@ -9,5 +9,9 @@ namespace _1101113.Models.AdminViewModels
     public class IndexViewModel
     {
         public IEnumerable<Post> Posts { get; set; }
+       
+       
+
+        
     }
 }

@@ -12,5 +12,6 @@ namespace _1101113.BusinessManagers.Interfaces
         Task<IndexViewModel> GetAdminDashboard(ClaimsPrincipal claimsPrincipal);
         Task<AboutViewModel> GetAboutViewModel(ClaimsPrincipal claimsPrincipal);
         Task UpdateAbout(AboutViewModel aboutViewModel, ClaimsPrincipal claimsPrincipal);
+        
     }
 }

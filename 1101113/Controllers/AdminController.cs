@@ -1,7 +1,9 @@
 ﻿using _1101113.BusinessManagers.Interfaces;
+using _1101113.Data;
 using _1101113.Models.AdminViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,7 @@ namespace _1101113.Controllers
     public class AdminController : Controller
     {
         private readonly IAdminBusinessManager adminBusinessManager;
+        private readonly ApplicationDbContext _context;  // ประกาศ DbContext
 
 
         public AdminController(IAdminBusinessManager adminBusinessManager)
@@ -35,6 +38,10 @@ namespace _1101113.Controllers
         {
             await adminBusinessManager.UpdateAbout(aboutViewModel, User);
             return RedirectToAction("About");
+
         }
+
     }
+
 }
+

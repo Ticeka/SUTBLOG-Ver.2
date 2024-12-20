@@ -1,0 +1,152 @@
+﻿@model _1101113.Models.AdminViewModels.DashboardViewModel
+
+<div class="dashboard">
+    <h1 class="dashboard-title">Dashboard</h1>
+
+    <div class="cards-container">
+        <!-- Total Posts Card -->
+        <div class="card">
+            <h3>Total Posts</h3>
+            <p>@Model.TotalPosts</p>
+        </div>
+
+        <!-- Approved Posts Card -->
+        <div class="card">
+            <h3>Approved Posts</h3>
+            <p>@Model.ApprovedPosts</p>
+        </div>
+
+        <!-- Published Posts Card -->
+        <div class="card">
+            <h3>Published Posts</h3>
+            <p>@Model.PublishedPosts</p>
+        </div>
+
+        <!-- Total Viewers Card -->
+        <div class="card">
+            <h3>Total Viewers</h3>
+            <p>@Model.TotalViewers</p>
+        </div>
+    </div>
+
+    <div class="posts-with-comments">
+        <!-- Posts with Comments Card -->
+        <h3>Posts with Comments</h3>
+        <ul>
+            @foreach (var post in Model.PostsWithComments)
+            {
+                <li>@post.Title - Comments: @post.Comments.Count()</li>
+            }
+        </ul>
+    </div>
+
+    <!-- Chart for Posts Per Month -->
+    <div class="chart">
+        <canvas id="postChart"></canvas>
+    </div>
+</div>
+
+<script>
+   document.addEventListener('DOMContentLoaded', function () {
+    var ctx = document.getElementById('postChart').getContext('2d');
+
+    var postChart = new Chart(ctx, {
+        type: 'bar', // Bar chart
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'], // Shortened labels for months
+            datasets: [{
+                label: 'Posts Per Month',
+                data: @Html.Raw(Json.Serialize(Model.PostsPerMonth)), // Data from ViewModel
+                backgroundColor: 'rgba(54, 162, 235, 0.2)', // Bar color
+                borderColor: 'rgba(54, 162, 235, 1)', // Border color
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,  // Auto resize the chart based on container size
+            maintainAspectRatio: false, // Allows the chart to adjust aspect ratio
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+</script>
+
+<style>
+    .dashboard {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        color: #333;
+    }
+
+    .dashboard-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 30px;
+        color: #333;
+        text-align: center;
+    }
+
+    .cards-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .card {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        width: 22%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .card p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+    .posts-with-comments {
+        margin-bottom: 30px;
+    }
+
+        .posts-with-comments ul {
+            padding-left: 20px;
+        }
+
+        .posts-with-comments li {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+    .chart {
+        margin-top: 30px;
+        max-width: 100%; /* ให้ container ของกราฟไม่เกินขนาดหน้าจอ */
+        height: 400px; /* ปรับความสูงของกราฟให้พอดี */
+    }
+
+    canvas {
+        width: 100%; /* กว้าง 100% ของ container */
+        height: 100%; /* ความสูง 100% ของ container */
+        display: block; /* ให้ canvas เป็น block เพื่อให้ปรับขนาดได้ง่าย */
+    }
+</style>

@@ -1,9 +1,11 @@
 ﻿using _1101113.BusinessManagers.Interfaces;
+using _1101113.Data;
 using _1101113.Models.AdminViewModels;
 using Blog.Data.Models;
 using Blog.Service.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,6 +39,8 @@ namespace _1101113.BusinessManagers
                 Posts = postService.GetPosts(applicationUser)
             };
         }
+
+       
 
         public async Task<AboutViewModel> GetAboutViewModel(ClaimsPrincipal claimsPrincipal)
         {
@@ -80,5 +84,6 @@ namespace _1101113.BusinessManagers
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
             }
         }
+
     }
 }
