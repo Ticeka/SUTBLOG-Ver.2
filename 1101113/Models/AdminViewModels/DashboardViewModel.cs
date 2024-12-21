@@ -16,12 +16,15 @@ namespace _1101113.Models.AdminViewModels
         public int PublishedPosts { get; set; }
         public int TotalViewers { get; set; }
         public IEnumerable<Post> PostsWithComments { get; set; }
+        public int TotalComments { get; set; }
 
         // ข้อมูลกราฟ
         public List<int> PostsPerMonth { get; set; } // ใช้สำหรับกราฟ
         
         public int ApprovedPostsPerMonth { get; set; }
         public int PublishedPostsPerMonth { get; set; }
+        public List<int> PostsWithCommentsPerMonth { get; set; }
     }
+    
 
 }

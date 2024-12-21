@@ -27,10 +27,15 @@
             <h3>Total Viewers</h3>
             <p>@Model.TotalViewers</p>
         </div>
+
+        <!-- Total Comments Card -->
+        <div class="card">
+            <h3>Total Comments</h3>
+            <p>@Model.TotalComments</p>  <!-- Display Total Comments -->
+        </div>
     </div>
 
     <div class="posts-with-comments">
-        <!-- Posts with Comments Card -->
         <h3>Posts with Comments</h3>
         <ul>
             @foreach (var post in Model.PostsWithComments)
@@ -40,31 +45,31 @@
         </ul>
     </div>
 
-    <!-- Chart for Posts Per Month -->
+    <!-- Chart for Posts with Comments Per Month -->
     <div class="chart">
-        <canvas id="postChart"></canvas>
+        <canvas id="commentsChart"></canvas>
     </div>
 </div>
 
 <script>
    document.addEventListener('DOMContentLoaded', function () {
-    var ctx = document.getElementById('postChart').getContext('2d');
+    var ctx = document.getElementById('commentsChart').getContext('2d');
 
-    var postChart = new Chart(ctx, {
+    var commentsChart = new Chart(ctx, {
         type: 'bar', // Bar chart
         data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'], // Shortened labels for months
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // Labels for months
             datasets: [{
-                label: 'Posts Per Month',
-                data: @Html.Raw(Json.Serialize(Model.PostsPerMonth)), // Data from ViewModel
-                backgroundColor: 'rgba(54, 162, 235, 0.2)', // Bar color
-                borderColor: 'rgba(54, 162, 235, 1)', // Border color
+                label: 'Posts with Comments per Month',
+                data: @Html.Raw(Json.Serialize(Model.PostsWithCommentsPerMonth)), // Data for posts with comments
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Bar color
+                borderColor: 'rgba(75, 192, 192, 1)', // Border color
                 borderWidth: 1
             }]
         },
         options: {
-            responsive: true,  // Auto resize the chart based on container size
-            maintainAspectRatio: false, // Allows the chart to adjust aspect ratio
+            responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true
@@ -140,13 +145,13 @@
 
     .chart {
         margin-top: 30px;
-        max-width: 100%; /* ให้ container ของกราฟไม่เกินขนาดหน้าจอ */
-        height: 400px; /* ปรับความสูงของกราฟให้พอดี */
+        max-width: 100%;
+        height: 400px;
     }
 
     canvas {
-        width: 100%; /* กว้าง 100% ของ container */
-        height: 100%; /* ความสูง 100% ของ container */
-        display: block; /* ให้ canvas เป็น block เพื่อให้ปรับขนาดได้ง่าย */
+        width: 100%;
+        height: 100%;
+        display: block;
     }
 </style>

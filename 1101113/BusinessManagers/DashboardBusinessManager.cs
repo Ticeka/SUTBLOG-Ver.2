@@ -24,19 +24,15 @@ namespace _1101113.BusinessManagers
 
         public async Task<DashboardViewModel> GetDashboardData(ClaimsPrincipal claimsPrincipal)
         {
-            // ดึงข้อมูลผู้ใช้งานจาก ClaimsPrincipal
             var applicationUser = await _userManager.GetUserAsync(claimsPrincipal);
 
-            // ตรวจสอบว่า applicationUser เป็น null หรือไม่
             if (applicationUser == null)
                 return null;
 
-            // ใช้ applicationUser.Id เพื่อกรองโพสต์ตาม UserId
             var userId = applicationUser.Id;
 
-            // ดึงโพสต์ที่เป็นของผู้ใช้งานนั้น
             var posts = await _context.Posts
-                .Where(p => p.Creator.Id == userId)  // กรองโพสต์ที่มี UserId ตรงกับผู้ใช้งาน
+                .Where(p => p.Creator.Id == userId)
                 .Include(p => p.Comments)
                 .ToListAsync();
 
@@ -46,10 +42,19 @@ namespace _1101113.BusinessManagers
             var totalViewers = posts.Sum(p => p.Viewer);
             var postsWithComments = posts.Where(p => p.Comments.Any()).ToList();
 
+            var totalComments = posts.Sum(p => p.Comments != null ? p.Comments.Count() : 0);  // ตรวจสอบ null ด้วย
+
+
             var postsPerMonth = posts
                 .GroupBy(p => p.CreatedOn.Month)
                 .OrderBy(g => g.Key)
                 .Select(g => g.Count())
+                .ToList();
+
+            var postsWithCommentsPerMonth = posts
+                .GroupBy(p => p.CreatedOn.Month)
+                .OrderBy(g => g.Key)
+                .Select(g => g.Count(p => p.Comments.Any()))  // คำนวณโพสต์ที่มีคอมเมนต์ในแต่ละเดือน
                 .ToList();
 
             var viewModel = new DashboardViewModel
@@ -59,10 +64,16 @@ namespace _1101113.BusinessManagers
                 PublishedPosts = publishedPosts,
                 TotalViewers = totalViewers,
                 PostsWithComments = postsWithComments,
-                PostsPerMonth = postsPerMonth
+                PostsPerMonth = postsPerMonth,
+                TotalComments = totalComments,
+                PostsWithCommentsPerMonth = postsWithCommentsPerMonth  // เพิ่มข้อมูลโพสต์ที่มีคอมเมนต์
             };
 
             return viewModel;
         }
+
+
+
+
     }
 }
