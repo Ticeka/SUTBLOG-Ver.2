@@ -14,6 +14,7 @@ namespace Blog.Service.Interfaces
         Comment GetComment(int commentId);
         Task<Comment> Add(Comment comment);
         Task<Post> Update(Post post);
+        Task Delete(Post post);
 
         IEnumerable<Post> GetPosts(string searchString);
     }

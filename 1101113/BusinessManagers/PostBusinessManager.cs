@@ -219,5 +219,39 @@ namespace _1101113.BusinessManager
             }
         }
 
+        public async Task<ActionResult> DeletePost(int? id, ClaimsPrincipal claimsPrincipal)
+        {
+            if (id is null)
+                return new BadRequestResult();
+
+            var postId = id.Value;
+
+            var post = postService.GetPost(postId);
+
+            if (post is null)
+                return new NotFoundResult();
+
+            // Ensure the user has permission to delete the post
+            var authorizationResult = await authorizationService.AuthorizeAsync(claimsPrincipal, post, Operations.Delete);
+
+            if (!authorizationResult.Succeeded)
+                return DetermineActionResult(claimsPrincipal);
+
+            // Delete the post's header image if it exists
+            string webRootPath = webHostEnviroment.WebRootPath;
+            string pathToImage = $@"{webRootPath}\UserFiles\Posts\{post.id}\HeaderImage.jpg";
+
+            if (File.Exists(pathToImage))
+            {
+                File.Delete(pathToImage);
+            }
+
+            // Delete the post from the database
+            await postService.Delete(post);
+
+            return new OkResult();  // Or you can redirect to another view, like a list of posts
+        }
+
+
     }
 }

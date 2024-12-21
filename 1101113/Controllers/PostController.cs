@@ -77,5 +77,17 @@ namespace _1101113.Controllers
 
             return actionResult.Result;
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var actionResult = await postBusinessManager.DeletePost(id, User);
+
+           
+            if (actionResult is null)
+                return RedirectToAction("Index"); 
+
+            return actionResult; 
+        }
     }
 }

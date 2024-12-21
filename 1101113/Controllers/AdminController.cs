@@ -15,7 +15,7 @@ namespace _1101113.Controllers
     public class AdminController : Controller
     {
         private readonly IAdminBusinessManager adminBusinessManager;
-        private readonly ApplicationDbContext _context;  // ประกาศ DbContext
+        private readonly ApplicationDbContext _context;  
 
 
         public AdminController(IAdminBusinessManager adminBusinessManager)

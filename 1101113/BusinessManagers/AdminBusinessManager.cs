@@ -5,6 +5,7 @@ using Blog.Data.Models;
 using Blog.Service.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -84,6 +85,6 @@ namespace _1101113.BusinessManagers
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
             }
         }
-
+       
     }
 }

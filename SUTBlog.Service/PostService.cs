@@ -77,5 +77,22 @@ namespace Blog.Service
             await applicationDbContext.SaveChangesAsync();
             return post;
         }
+
+        public async Task Delete(Post post)
+        {
+            // Delete related comments if needed (optional, depending on your business logic)
+            var comments = applicationDbContext.Comments.Where(comment => comment.Post.id == post.id).ToList();
+            foreach (var comment in comments)
+            {
+                applicationDbContext.Comments.Remove(comment);
+            }
+
+            // Remove the post itself
+            applicationDbContext.Posts.Remove(post);
+
+            // Save changes to apply the deletion
+            await applicationDbContext.SaveChangesAsync();
+        }
+
     }
 }

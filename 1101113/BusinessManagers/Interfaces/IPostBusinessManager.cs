@@ -18,5 +18,6 @@ namespace _1101113.BusinessManagers.Interfaces
         Task<ActionResult<EditViewModel>> UpdatePost(EditViewModel editViewModel, ClaimsPrincipal claimsPrincipal);
         Task<ActionResult<Comment>> CreateComment(PostViewModel postViewModel, ClaimsPrincipal claimsPrincipal);
         IndexViewModel GetIndexViewModel(string searchString, int? page);
+        Task<ActionResult> DeletePost(int? id, ClaimsPrincipal claimsPrincipal);
     }
 }
