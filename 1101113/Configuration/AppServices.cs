@@ -35,7 +35,7 @@ namespace _1101113.Configuration
         public static void AddCustomServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IPostBusinessManager, PostBusinessManager>();
-            serviceCollection.AddScoped<IAdminBusinessManager, AdminBusinessManager>();
+            serviceCollection.AddScoped<BusinessManagers.Interfaces.IAuthorBusinessManager, AuthorBusinessManager>();
             serviceCollection.AddScoped<IHomeBusinessManager, HomeBusinessManager>();
             serviceCollection.AddScoped<IDashboardBusinessManager, DashboardBusinessManager>();
 

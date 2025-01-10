@@ -1,6 +1,7 @@
 ﻿using _1101113.BusinessManagers.Interfaces;
 using _1101113.Data;
 using _1101113.Models.AdminViewModels;
+using _1101113.Models.AuthorViewModels;
 using Blog.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

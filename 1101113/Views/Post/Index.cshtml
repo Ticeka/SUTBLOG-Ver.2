@@ -6,6 +6,8 @@
     ViewData["AuthorName"] = $"{Model.Post.Creator.FirstName} {Model.Post.Creator.LastName}";
     ViewData["PostDate"] = Model.Post.UpdatedOn.ToString("MMM d, yyyy");
     ViewData["AuthorId"] = Model.Post.Creator.Id;
+    ViewData["Tags"] = Model.Post.Tag;
+
 }
 
 <article>

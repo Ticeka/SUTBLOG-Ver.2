@@ -49,7 +49,7 @@ namespace _1101113.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Add(CreateViewModel createViewModel)
-        {           
+        {
             await postBusinessManager.CreatePost(createViewModel, User);
             return RedirectToAction("Create");
         }
@@ -83,11 +83,11 @@ namespace _1101113.Controllers
         {
             var actionResult = await postBusinessManager.DeletePost(id, User);
 
-           
-            if (actionResult is null)
-                return RedirectToAction("Index"); 
 
-            return actionResult; 
+            if (actionResult is null)
+                return RedirectToAction("Index");
+
+            return actionResult;
         }
     }
 }

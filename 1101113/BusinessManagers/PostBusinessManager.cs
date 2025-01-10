@@ -25,9 +25,9 @@ namespace _1101113.BusinessManager
         private readonly IWebHostEnvironment webHostEnviroment;
         private readonly IAuthorizationService authorizationService;
 
-        
 
-        public PostBusinessManager(UserManager<ApplicationUser> userManager,IPostService postService,IWebHostEnvironment webHostEnvironment,IAuthorizationService authorizationService)
+
+        public PostBusinessManager(UserManager<ApplicationUser> userManager, IPostService postService, IWebHostEnvironment webHostEnvironment, IAuthorizationService authorizationService)
         {
             this.userManager = userManager;
             this.postService = postService;
@@ -35,7 +35,7 @@ namespace _1101113.BusinessManager
             this.authorizationService = authorizationService;
         }
 
-        public IndexViewModel GetIndexViewModel(string searchString ,int? page)
+        public IndexViewModel GetIndexViewModel(string searchString, int? page)
         {
             int pagesize = 9;
             int pageNumber = page ?? 1;
@@ -44,13 +44,13 @@ namespace _1101113.BusinessManager
 
             return new IndexViewModel
             {
-                Posts = new StaticPagedList<Post>(posts.Skip((pageNumber - 1) * pagesize).Take(pagesize),pageNumber,pagesize,posts.Count()),
+                Posts = new StaticPagedList<Post>(posts.Skip((pageNumber - 1) * pagesize).Take(pagesize), pageNumber, pagesize, posts.Count()),
                 SearchString = searchString,
                 PageNumber = pageNumber
             };
         }
 
-        public async Task<ActionResult<PostViewModel>> GetPostViewModel(int? id,ClaimsPrincipal claimsPrincipal)
+        public async Task<ActionResult<PostViewModel>> GetPostViewModel(int? id, ClaimsPrincipal claimsPrincipal)
         {
             if (id is null)
                 return new BadRequestResult();
@@ -64,7 +64,7 @@ namespace _1101113.BusinessManager
 
             if (!post.published)
             {
-               var authorizationResult = await authorizationService.AuthorizeAsync(claimsPrincipal, post, Operations.Read);
+                var authorizationResult = await authorizationService.AuthorizeAsync(claimsPrincipal, post, Operations.Read);
 
                 if (!authorizationResult.Succeeded) return DetermineActionResult(claimsPrincipal);
             }
@@ -94,12 +94,12 @@ namespace _1101113.BusinessManager
 
             EnsureFolder(pathToImage);
 
-            using(var fileStream = new FileStream(pathToImage, FileMode.Create))
+            using (var fileStream = new FileStream(pathToImage, FileMode.Create))
             {
                 await createViewModel.HeaderImage.CopyToAsync(fileStream);
             }
 
-            return post;   
+            return post;
         }
 
         public async Task<ActionResult<Comment>> CreateComment(PostViewModel postViewModel, ClaimsPrincipal claimsPrincipal)
@@ -118,7 +118,7 @@ namespace _1101113.BusinessManager
             comment.Post = post;
             comment.CreatedOn = DateTime.Now;
 
-            if(comment.Parent != null)
+            if (comment.Parent != null)
             {
                 comment.Parent = postService.GetComment(comment.Parent.Id);
             }
@@ -140,6 +140,7 @@ namespace _1101113.BusinessManager
             post.published = editViewModel.Post.published;
             post.Title = editViewModel.Post.Title;
             post.Content = editViewModel.Post.Content;
+            post.Tag = editViewModel.Post.Tag;
             post.UpdatedOn = DateTime.Now;
 
             if (editViewModel.HeaderImage != null)
@@ -160,14 +161,14 @@ namespace _1101113.BusinessManager
 
         public async Task<ActionResult<EditViewModel>> GetEditViewModel(int? id, ClaimsPrincipal claimsPrincipal)
         {
-            if(id is null)
+            if (id is null)
                 return new BadRequestResult();
 
             var postId = id.Value;
 
             var post = postService.GetPost(postId);
 
-            if(id is null)
+            if (id is null)
                 return new NotFoundResult();
 
             var authorizationResult = await authorizationService.AuthorizeAsync(claimsPrincipal, post, Operations.Update);
@@ -191,7 +192,7 @@ namespace _1101113.BusinessManager
         private void EnsureFolder(string path)
         {
             string directoryName = Path.GetDirectoryName(path);
-            if(directoryName.Length > 0)
+            if (directoryName.Length > 0)
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
             }

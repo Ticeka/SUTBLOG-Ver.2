@@ -46,11 +46,23 @@
                         {
                             <span class="subheading">@ViewData["SubHeader"]</span>
                         }
+                        <!-- Add Tags -->
+                        <div class="tags mt-2">
+                            @if (ViewData["Tags"] != null)
+                            {
+                                var tags = ViewData["Tags"].ToString().Split(',');<!-- Assume tags are comma-separated -->
+                                foreach (var tag in tags)
+                                {
+                                    <span class="badge badge-primary mx-1">@tag.Trim()</span>
+                                }
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+
 
     <div class="content">
         @RenderBody()

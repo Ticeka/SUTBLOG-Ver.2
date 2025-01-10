@@ -12,6 +12,6 @@ namespace _1101113.Models.PostViewModels
     {
         [ Display(Name = "Header Image")]
         public IFormFile HeaderImage { get; set; }
-        public Post Post { get; set; }
+        public Post Post { get; set; }     
     }
 }

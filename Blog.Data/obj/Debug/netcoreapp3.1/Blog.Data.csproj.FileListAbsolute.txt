@@ -15,4 +15,3 @@ C:\Users\WiNDOWS 11 PRO\source\repos\SUT-BLOG-main\Blog.Data\obj\Debug\netcoreap
 C:\Users\WiNDOWS 11 PRO\source\repos\SUT-BLOG-main\Blog.Data\obj\Debug\netcoreapp3.1\Blog.Data.csproj.CoreCompileInputs.cache
 C:\Users\WiNDOWS 11 PRO\source\repos\SUT-BLOG-main\Blog.Data\obj\Debug\netcoreapp3.1\Blog.Data.dll
 C:\Users\WiNDOWS 11 PRO\source\repos\SUT-BLOG-main\Blog.Data\obj\Debug\netcoreapp3.1\Blog.Data.pdb
-C:\Users\WiNDOWS 11 PRO\source\repos\SUT-BLOG-main\Blog.Data\obj\Debug\netcoreapp3.1\Blog.Data.csproj.AssemblyReference.cache
